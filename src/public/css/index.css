@@ -1,0 +1,25 @@
+body {
+  background-color: #FFE4C4;
+  background: url('../images/9797fa4e-cec5-4c85-9cd7-d4a9a4a8c5c2.jpeg') no-repeat center center fixed;
+  background-size:cover;
+  font-family: Arial, sans-serif; 
+}
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px;
+  padding: 20px;
+  box-shadow: 0 0 10px ;
+  border-radius: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px
+}

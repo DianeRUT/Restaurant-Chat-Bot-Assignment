@@ -1,0 +1,29 @@
+body {
+  background-color: #FFE4C4;
+  background: url('../images/9797fa4e-cec5-4c85-9cd7-d4a9a4a8c5c2.jpeg') no-repeat center center fixed;
+  background-size:cover;
+  font-family: Arial, sans-serif; 
+}
+.container {
+  max-width: 600px;
+  margin-top: 50px;
+}
+#messages {
+  list-style-type: none;
+  padding: 0;
+}
+#messages li {
+  margin-bottom: 10px;
+}
+#form {
+  display: flex;
+  margin-top: 20px;
+}
+#form input {
+  height: 100%;
+  flex: 1;
+  padding: 10px;
+}
+#form button {
+  padding: 10px 20px;
+}
