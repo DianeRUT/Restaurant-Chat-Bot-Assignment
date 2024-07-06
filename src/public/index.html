@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <link rel="stylesheet" href="./css/fontawesome.css" />
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <div class="container centered-form">
@@ -30,5 +31,21 @@
         </form>
       </div>
     </div>
+    <script>
+      const socket = io(); // Initialize socket.io client connection
+
+      socket.on('message', (data) => {
+        const messages = document.getElementById('messages');
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = data.text;
+        messages.appendChild(messageElement);
+      });
+
+      document.getElementById('send-button').addEventListener('click', () => {
+        const messageInput = document.getElementById('message-input');
+        socket.emit('message', messageInput.value);
+        messageInput.value = '';
+      });
+    </script>
   </body>
 </html>
