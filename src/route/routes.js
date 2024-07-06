@@ -1,14 +1,19 @@
 import { Router } from "express";
-import { join } from "path";
+import { join, dirname } from "path";
+import { fileURLToPath } from "url";
 
 const route = Router();
+
+// Get __dirname equivalent in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 route.get("/", (req, res) => {
   if (req.session.username) {
     res.redirect("/chat");
     return;
   }
-  res.sendFile(join(import.meta.dirname, "..", "public", "index.html"));
+  res.sendFile(join(__dirname, "..", "public", "index.html"));
 });
 
 route.post("/", (req, res) => {
@@ -18,12 +23,8 @@ route.post("/", (req, res) => {
 
 route.get("/chat", (req, res) => {
   if (req.session.username) {
-    res.sendFile(join(import.meta.dirname, "..", "public", "chat.html"), {
-    headers: {
-      "Set-Cookie": `username=${req.session.username}`
-    }
-  });
-    
+    res.cookie('username', req.session.username);
+    res.sendFile(join(__dirname, "..", "public", "chat.html"));
     return;
   }
   res.redirect("/");
